@@ -1,0 +1,115 @@
+# Voltage vs Current in a DC pump (how my model
+broke and rebuilt)
+
+This realization came from me being confused for
+longer than I'd like to admit.
+
+Initially, my thinking was very simple:
+- it's a 5V DC pump
+- therefore it needs 5V
+- current didn't really matter to me
+
+Voltage felt like the *requirement*.
+Current felt like something the circuit would
+automatically handle.
+
+---
+
+## Where things started going wrong
+
+Then I had to use a boost converter.
+
+The idea was:
+- input voltage lower than 5V
+- boost it to 5V
+- then connect the pump
+
+But boost converter modules don't magically
+create power.
+if voltage goes up, current goes down (roughly
+constant power).
+
+And suddenly:
+- the output voltage was correct
+- but the pump wouldn't run properly
+- or it stalled
+- or it behaved inconsistently
+
+That confused me badly.
+
+---
+
+## The 1.5V moment that made it worse
+
+At some point, I noticed the pump *did* run on a
+single 1.5V cell.
+
+That completely broke my "it needs 5V belief".
+
+So my brain jumped to the opposite extreme:
+- voltage doesn't matter much
+- only current matters
+- if enough current flows, the motor will run
+
+This felt consistent for a while.
+But it wasn't the full truth either.
+
+---
+
+## The realization (not sudden, but settling)
+
+What finally made things click was understanding 
+that:
+
+- **Voltage and current do different jobs**
+- They are not interchangable
+
+Volatge:
+- sets the speed
+- sets the energy per charge
+- is tied to back EMF in motors
+
+Current:
+- sets torque
+- increases when load increases
+- is what actually produces force
+
+So:
+- a motor can *run* at lower voltage, but slower 
+and weaker
+- forcing voltage without enough current
+capability doesn't help
+- forcing current without sufficient voltage
+doesn't make sense either
+
+Both matter, but in different ways.
+
+---
+
+## What in understand now (still evolving)
+
+- Rated voltage is about intended operating
+point, not a hard on/off rule
+- Boosting voltage at the cost of current can
+starve torque
+- A motor running is not equal to motor
+running properly
+- Thinking in terms of power, torque, speed, and 
+limits matters more than labels
+
+---
+
+## Why I'm writing this
+
+Because my mistake wasn't ignorance.
+It was oversimplification.
+
+I jumped from;
+"voltage matters"
+to
+"current matters"
+instead of asking:
+*what does each one actually do?*
+
+This is me recording that transition so I don't
+forget it.
