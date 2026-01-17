@@ -1,5 +1,4 @@
-# Voltage vs Current in a DC pump (how my model
-broke and rebuilt)
+# Voltage vs Current in a DC pump (how my model broke and rebuilt)
 
 This realization came from me being confused for
 longer than I'd like to admit.
