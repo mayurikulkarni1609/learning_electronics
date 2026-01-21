@@ -1,0 +1,74 @@
+//Day of the programmer (Day-1)
+#include<stdio.h>
+int main(){
+    int year,month,month_days,day=256,leap;
+    printf("Enter the year: ");
+    scanf("%d",&year);
+    if(year>=1700&&year<=1917){
+    for(month=1;month<12;month++){
+        leap=((year%4)==0)?1:0;
+        switch(month){
+            case 2:
+            month_days = leap?29:28;
+            break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+            month_days=30;
+            break;
+            default:
+            month_days=31;
+        }
+        if(day<=month_days)
+        break;
+        else
+        day = day-month_days;
+        }
+    }
+    if(year==1918){
+         for(month=1;month<12;month++){
+         switch(month){
+            case 2:
+            month_days = 15;
+            break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+            month_days=30;
+            break;
+            default:
+            month_days=31;
+        }
+        if(day<=month_days)
+        break;
+        else
+        day = day-month_days;
+        }
+    }
+    if(year>=1919&&year<=2700){
+         for(month=1;month<12;month++){
+        leap=((year%400)==0)||((year%4==0)&&((year%100)!=0));
+        switch(month){
+            case 2:
+            month_days = leap?29:28;
+            break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+            month_days=30;
+            break;
+            default:
+            month_days=31;
+        }
+        if(day<=month_days)
+        break;
+        else
+        day = day-month_days;
+        }
+    }
+     printf("The 256th day of the year entered is %d/%d/%d",day,month,year);
+     return 0;
+}
